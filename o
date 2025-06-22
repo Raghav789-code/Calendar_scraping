@@ -1,4 +1,4 @@
-# Django REST API Authentication Guide
+#Django REST API Authentication Guide
 
 This repository serves as a structured learning resource for understanding Django REST Framework (DRF) and implementing REST API authentication, including JSON Web Token (JWT) authentication.
 
