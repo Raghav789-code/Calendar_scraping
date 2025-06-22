@@ -1,0 +1,64 @@
+# Django REST API Authentication Guide
+
+This repository serves as a structured learning resource for understanding Django REST Framework (DRF) and implementing REST API authentication, including JSON Web Token (JWT) authentication.
+
+## 1. Introduction to Django REST Framework (DRF)
+
+Django REST Framework (DRF) is a powerful and flexible toolkit for building Web APIs in Django. It provides features like:
+
+- Serialization (converting Django models to JSON and vice versa)
+- Authentication and permissions
+- Class-based views and viewsets
+- Browsable API for quick testing and debugging
+
+### Why Use DRF?
+
+- Clean separation of backend logic and API interface
+- Easily connects with frontend frameworks like React, Vue, etc.
+- Support for various authentication schemes (Token, Session, JWT)
+- Highly customizable and scalable
+
+### Recommended Video Resource
+
+- [30-minute DRF Introduction (English)](https://youtu.be/NoLF7Dlu5mc?si=1qT6PcJGLSui5M0a)
+- [60-minute DRF Full Tutorial (English)](https://youtu.be/t-uAgI-AUxc?si=4tNm0zH8sn-pXbwe)
+- [DRF Hindi Tutorial](https://youtu.be/DNFTUtZf1Zc?si=eYclIuA4hJ_mBJcC)
+
+---
+
+## 2. REST API Authentication in Django
+
+DRF supports multiple authentication schemes, including:
+
+- SessionAuthentication (default)
+- BasicAuthentication
+- TokenAuthentication
+- Custom Auth Schemes (like JWT)
+
+### How Django REST API Authentication Works
+
+1. **SessionAuthentication**:
+   - Works like Django’s default login system.
+   - Requires login via session (i.e., browser cookies).
+   - Mostly used for web apps with templates.
+
+2. **BasicAuthentication**:
+   - Passes username and password in the `Authorization` header as base64.
+   - Less secure if not used over HTTPS.
+
+3. **TokenAuthentication**:
+   - User obtains a token (usually once, via login).
+   - Every API request uses the token in headers: `Authorization: Token <token>`.
+
+### Configuring REST Authentication
+
+In `settings.py`:
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
